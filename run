@@ -18,6 +18,8 @@ if res.status_code != 200:
     print(f"Error fetch data: {res.status_code}")
     sys.exit(1)
 
+print(f"The request has returned {len(res.json())} results")
+
 detector = gender.Detector()
 
 women = []
@@ -31,5 +33,5 @@ for json in res.json():
         women.append(fullname)
         print(fullname)
 
-print(f"En la comunidad {args.group} podría haber {len(women)} mujeres")
+print(f"In the meetup group {args.group} might be {len(women)} women")
 
