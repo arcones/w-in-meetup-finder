@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.8
 
 import requests
+import math
 import gender_guesser.detector as gender
 from argparse import ArgumentParser
 
@@ -10,28 +11,38 @@ parser.add_argument('group', help='Name of the group, as it appears in the URL o
 
 args = parser.parse_args()
 
-url = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=10000&only=name"
+# Get the number of members that the group contains
 
-res = requests.get(url)
+urlGroup = f"https://api.meetup.com/{args.group}?&sign=true&photo-host=public&only=members"
 
-if res.status_code != 200:
-    print(f"Error fetch data: {res.status_code}")
-    sys.exit(1)
+res = requests.get(urlGroup)
 
-print(f"The request has returned {len(res.json())} results")
+members = res.json()['members']
 
-detector = gender.Detector()
+print(f"The {args.group} has {members} members")
 
+# Compose the request to get member names with pagination
+
+offsets = math.floor(members/200)
+detector = gender.Detector(case_sensitive=False)
 women = []
 
-for json in res.json():
-    fullname = json['name']
-    name = fullname.split()[0]
-    gender = detector.get_gender(name, u'spain')
+print(f"It is needed to do {offsets + 1} request")
 
-    if gender not in ["male", "unknown", "andy"]:
-        women.append(fullname)
-        print(fullname)
+while offsets != -1:
+    urlMembers = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=200&offset={offsets}&only=name"
+    print(f"Request for group {args.group} with offset {offsets}")
+    res = requests.get(urlMembers)
+    for json in res.json():
+        fullname = json['name']
+        name = fullname.split()[0]
+        gender = detector.get_gender(name, u'spain')
+
+        if gender not in ["male", "unknown", "andy", "mostly_male"]:
+            women.append(fullname)
+            print(fullname)
+
+    offsets -= 1
 
 print(f"In the meetup group {args.group} might be {len(women)} women")
 
