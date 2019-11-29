@@ -19,7 +19,7 @@ res = requests.get(urlGroup)
 
 members = res.json()['members']
 
-print(f"The {args.group} has {members} members")
+print(f"The {args.group} meetup public group has {members} members")
 
 # Compose the request to get member names with pagination
 
