@@ -10,7 +10,7 @@ parser.add_argument('group', help='Name of the group, as it appears in the URL o
 
 args = parser.parse_args()
 
-url = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=100&only=name"
+url = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=10000&only=name"
 
 res = requests.get(url)
 
@@ -20,10 +20,16 @@ if res.status_code != 200:
 
 detector = gender.Detector()
 
+women = []
+
 for json in res.json():
-    name = json['name'].split()[0]
+    fullname = json['name']
+    name = fullname.split()[0]
     gender = detector.get_gender(name, u'spain')
 
     if gender not in ["male", "unknown", "andy"]:
-        print(f"{json['name']} is probably {gender}")
+        women.append(fullname)
+        print(fullname)
+
+print(f"En la comunidad {args.group} podría haber {len(women)} mujeres")
 
