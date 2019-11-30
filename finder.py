@@ -5,7 +5,6 @@ import math
 import gender_guesser.detector as gender
 from argparse import ArgumentParser
 
-
 parser = ArgumentParser(description='Get the names of the members of a meetup group')
 parser.add_argument('group', help='Name of the group, as it appears in the URL of the platform')
 
@@ -27,11 +26,8 @@ offsets = math.floor(members/200)
 detector = gender.Detector(case_sensitive=False)
 women = []
 
-#print(f"It is needed to do {offsets + 1} request")
-
 while offsets != -1:
     urlMembers = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=200&offset={offsets}&only=name"
-    #print(f"Request for group {args.group} with offset {offsets}")
     res = requests.get(urlMembers)
     for json in res.json():
         fullname = json['name']
@@ -45,4 +41,3 @@ while offsets != -1:
     offsets -= 1
 
 print(f"In the meetup group {args.group}, of a total of {members} members might be {len(women)} women")
-

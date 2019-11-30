@@ -9,8 +9,8 @@ Install the requirements with pip3:
 
 Run it with python3 providing the name of the public meetup group (as it appears in meetup URLs) as parameter, like in the following example:
 
-`python3 finder <NameOfThePublicMeetupGroupHere>`
+`python3 finder.py <NameOfThePublicMeetupGroupHere>`
 
 Like in the following example:
 
-`python3 finder Madrid-HashiCorp-User-Group`
+`python3 finder.py Madrid-HashiCorp-User-Group`
