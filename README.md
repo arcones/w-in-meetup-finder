@@ -3,6 +3,8 @@
 Tool to query for female members of public meetup groups.
 It uses gender-guesser library to guess if the member is female, so the guess is not perfect but close enough.
 
+## Requirements: pip3 & python3
+
 Install the requirements with pip3:
 
 `pip3 install --user -r requirements.txt`
