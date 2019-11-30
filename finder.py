@@ -12,13 +12,11 @@ args = parser.parse_args()
 
 # Get the number of members that the group contains
 
-urlGroup = f"https://api.meetup.com/{args.group}?&sign=true&photo-host=public&only=members"
+url_group = f"https://api.meetup.com/{args.group}?&sign=true&photo-host=public&only=members"
 
-res = requests.get(urlGroup)
+res = requests.get(url_group)
 
 members = res.json()['members']
-
-print(f"The {args.group} meetup public group has {members} members")
 
 # Compose the request to get member names with pagination
 
@@ -27,8 +25,8 @@ detector = gender.Detector(case_sensitive=False)
 women = []
 
 while offsets != -1:
-    urlMembers = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=200&offset={offsets}&only=name"
-    res = requests.get(urlMembers)
+    url_members = f"https://api.meetup.com/{args.group}/members?&sign=true&photo-host=public&page=200&offset={offsets}&only=name"
+    res = requests.get(url_members)
     for json in res.json():
         fullname = json['name']
         name = fullname.split()[0]
@@ -36,8 +34,16 @@ while offsets != -1:
 
         if gender not in ["male", "unknown", "andy", "mostly_male"]:
             women.append(fullname)
-            print(fullname)
 
     offsets -= 1
 
+# Save the names in a file
+output_file = open(f"{args.group}.txt", 'w')
+output_file.write(f"In the meetup group {args.group}, of a total of {members} members might be {len(women)} women\n")
+output_file.write("The names of female members found are:\n")
+for woman in women:
+    output_file.write(f"{woman}\n")
+output_file.close()
+
 print(f"In the meetup group {args.group}, of a total of {members} members might be {len(women)} women")
+print(f"See more info in {args.group}.txt file")
