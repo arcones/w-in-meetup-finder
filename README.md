@@ -1,4 +1,4 @@
-# WinDO-finder
+# women-in-meetup-finder
 
 Tool to query for female members of public meetup groups.
 It uses gender-guesser library to guess if the member is female, so the guess is not perfect but close enough.
