@@ -16,3 +16,7 @@ Run it with python3 providing the name of the public meetup group (as it appears
 Like in the following example:
 
 `python3 finder.py Madrid-HashiCorp-User-Group`
+
+## Background
+
+As an organizer of Women in DevOps Madrid meetup group, I have used this application to query for female members of similar groups so I can make them aware of the existence of my meetup group.
