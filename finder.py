@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 
 import requests
 import math
@@ -46,4 +46,5 @@ for woman in women:
 output_file.close()
 
 print(f"In the meetup group {args.group}, of a total of {members} members might be {len(women)} women")
+print(f"Women represent the {'%.1f'%((len(women)/members)*100)}% of the participants of the {args.group}")
 print(f"See more info in {args.group}.txt file")
