@@ -1,4 +1,4 @@
-# windo-finder
+# w-in-meetup-finder
 
 CLI to check the number & relative percentage of women in meetup public groups or in events of those groups.
 
