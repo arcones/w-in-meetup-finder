@@ -31,7 +31,9 @@ Like in the following example:
 That, as of 2020-03-12 gives these results:
 
 > In the meetup group Madrid-HashiCorp-User-Group, of a total of 351 members might be 21 women
+
 > Women represent the 6.0% of the participants of the Madrid-HashiCorp-User-Group
+
 > See more info in Madrid-HashiCorp-User-Group.txt file
 
 ### Meetup public group's event query
@@ -48,6 +50,7 @@ Like in the following example:
 That, gives these results:
 
 > In the event 267246665 of the meetup group Madrid-HashiCorp-User-Group, of a total of 43 attendees might be 1 women
+
 > Women represent the 2.3% of the attendance
 
 ## Roadmap
