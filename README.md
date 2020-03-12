@@ -1,21 +1,49 @@
 # windo-finder
 
+CLI to check the number & relative percentage of women in meetup public groups or in events of those groups.
 
 ## Background
+As an organizer of Women in DevOps Madrid and HashiCorp Madrid Users meetup groups, I originally created this application to query for female members of similar groups so I can make them aware of the existence of the meetup groups I organize so I can make them more diverse.
 
-As an organizer of Women in DevOps Madrid meetup group, I have created this application to query for female members of similar groups so I can make them aware of the existence of my meetup group.
+Later on, I used this program also to check for female members of specific events I hosted, so we can measure the diversity of the attendees in each event.
+
 It uses gender-guesser library to guess if the member is female, so the guess is not perfect but close enough.
 
 ## Requirements: pip3 & python3
+
+## Usage
 
 Install the requirements with pip3:
 
 `pip3 install --user -r requirements.txt`
 
-Run it with python3 providing the name of the public meetup group (as it appears in meetup URLs) as parameter, like in the following example:
+### Meetup public group query
 
-`python3 finder.py <NameOfThePublicMeetupGroupHere>`
+`python3 finderInGroup.py <NameOfThePublicMeetupGroup> # The name of the meetup group should be taken directly from meetup URL`
 
 Like in the following example:
 
-`python3 finder.py Madrid-HashiCorp-User-Group`
+`python3 finderInGroup.py Madrid-HashiCorp-User-Group`
+
+That, as of 2020-03-12 gives these results:
+
+> In the meetup group Madrid-HashiCorp-User-Group, of a total of 351 members might be 21 women
+> Women represent the 6.0% of the participants of the Madrid-HashiCorp-User-Group
+> See more info in Madrid-HashiCorp-User-Group.txt file
+
+### Meetup public group's event query
+
+`python3 finderInEvent.py <NameOfThePublicMeetupGroup> <IDOfTheEvent> # The name and the ID of the event should be taken directly from meetup URL`
+
+Like in the following example:
+
+`python3 finderInEvent.py Madrid-HashiCorp-User-Group 267246665`
+
+That, gives these results:
+
+> In the event 267246665 of the meetup group Madrid-HashiCorp-User-Group, of a total of 43 attendees might be 1 women
+> Women represent the 2.3% of the attendance
+
+## Roadmap
+- To plot the results on a Grafana pannel.
+- To check also the picture of the members/attendees
