@@ -3,9 +3,9 @@
 CLI to check the number & relative percentage of women in meetup public groups or in events of those groups.
 
 ## Background
-As an organizer of Women in DevOps Madrid and HashiCorp Madrid Users meetup groups, I originally created this application to query for female members of similar groups so I can make them aware of the existence of the meetup groups I organize so I can make them more diverse.
+As an organizer of Women in DevOps and HashiCorp Users Madrid meetup groups, I originally created this application to query for female members of similar groups so I can make my groups more diverse inviting them to join.
 
-Later on, I used this program also to check for female members of specific events I hosted, so we can measure the diversity of the attendees in each event.
+Later on, I used it also to check for female attendees of specific events I hosted, so we can measure the diversity of the attendance.
 
 It uses gender-guesser library to guess if the member is female, so the guess is not perfect but close enough.
 
