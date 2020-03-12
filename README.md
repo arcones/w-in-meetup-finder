@@ -19,7 +19,10 @@ Install the requirements with pip3:
 
 ### Meetup public group query
 
-`python3 finderInGroup.py <NameOfThePublicMeetupGroup> # The name of the meetup group should be taken directly from meetup URL`
+```
+# The name of the meetup group should be taken directly from meetup URL
+python3 finderInGroup.py <NameOfThePublicMeetupGroup>
+```
 
 Like in the following example:
 
@@ -33,7 +36,10 @@ That, as of 2020-03-12 gives these results:
 
 ### Meetup public group's event query
 
-`python3 finderInEvent.py <NameOfThePublicMeetupGroup> <IDOfTheEvent> # The name and the ID of the event should be taken directly from meetup URL`
+```
+# The name and the ID of the event should be taken directly from meetup URL
+python3 finderInEvent.py <NameOfThePublicMeetupGroup> <IDOfTheEvent> 
+```
 
 Like in the following example:
 
@@ -45,5 +51,5 @@ That, gives these results:
 > Women represent the 2.3% of the attendance
 
 ## Roadmap
-- To plot the results on a Grafana pannel.
-- To check also the picture of the members/attendees
+- In case gender guess fails with the name, the picture of the members/attendees is checked
+- To plot the results in a Grafana pannel
