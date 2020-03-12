@@ -9,15 +9,15 @@ Later on, I used it also to check for female attendees of specific events I host
 
 It uses gender-guesser library to guess if the member is female, so the guess is not perfect but close enough.
 
-## Requirements: pip3 & python3
-
 ## Usage
+
+You should have `pip3` & `python3` running in your machine.
 
 Install the requirements with pip3:
 
 `pip3 install --user -r requirements.txt`
 
-### Meetup public group query
+##### Meetup public group query
 
 ```
 # The name of the meetup group should be taken directly from meetup URL
@@ -36,7 +36,7 @@ That, as of 2020-03-12 gives these results:
 
 > See more info in Madrid-HashiCorp-User-Group.txt file
 
-### Meetup public group's event query
+##### Meetup public group's event query
 
 ```
 # The name and the ID of the event should be taken directly from meetup URL
